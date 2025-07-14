@@ -38,3 +38,63 @@ An interactive, AI-powered English grammar quiz app built with **Streamlit**. Th
 ```bash
 git clone https://github.com/maryasad/streamlit-grammar-app.git
 cd streamlit-grammar-app
+```
+
+### 2. Set up virtual environment
+```bash
+Copy
+Edit
+python -m venv venv
+venv\Scripts\activate  # On Windows
+# or
+source venv/bin/activate  # On macOS/Linux
+```
+### 3. Install dependencies
+```bash
+Copy
+Edit
+pip install -r requirements.txt
+```
+### 4. Add your OpenAI API key
+Create a .env file in the root:
+
+env
+Copy
+Edit
+OPENAI_API_KEY=sk-xxxxxxxxxxxxxxxx
+### 5. Run the app
+```bash
+Copy
+Edit
+streamlit run app.py
+```
+### ⚙️ Continuous Integration
+This project uses GitHub Actions to run CI checks on each push to main:
+
+✅ Python syntax checks via flake8
+
+✅ Dependency installation test
+
+✅ Code cleanliness for Streamlit app
+
+CI configuration is defined in .github/workflows/test.yml.
+
+### 📌 Planned Features
+ GPT-generated explanations for answers
+
+ Persian (Farsi) translation toggle
+
+ Text-to-speech for pronunciation
+
+ Score tracking over time
+
+ Auto-deploy via Streamlit Cloud
+
+
+
+### 📄 License
+MIT License 
+
+### 👩‍💻 Author
+Built with ❤️ by Maryam Asadi
+
