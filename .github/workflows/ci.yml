@@ -24,6 +24,6 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: ✅ Run basic Streamlit test
+    - name: ✅ Run Streamlit app in headless mode
       run: |
-        streamlit hello --headless
+        streamlit run app.py --server.headless true
