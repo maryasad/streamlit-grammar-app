@@ -91,10 +91,13 @@ CI configuration is defined in .github/workflows/test.yml.
  Auto-deploy via Streamlit Cloud
 
 
+```
+/app
+  ├── main.py            ← Streamlit entry
+  ├── generator.py       ← AI quiz logic
+  ├── prompts.py         ← prompt templates
+  ├── parser.py          ← answer extraction/cleanup
+  └── config.py          ← API keys/env loader
 
-### 📄 License
-MIT License 
-
-### 👩‍💻 Author
-Built with ❤️ by Maryam Asadi
+```
 

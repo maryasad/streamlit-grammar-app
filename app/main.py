@@ -1,8 +1,8 @@
+# app/main.py
 import streamlit as st
-from generator import generate_quiz
+from app.generator import generate_quiz
 
 st.set_page_config(page_title="AI Grammar Quiz", page_icon="🧠", layout="centered")
-
 st.title("🧠 AI Grammar Quiz Generator")
 st.write("Test your grammar with quizzes created by AI!")
 
@@ -13,7 +13,6 @@ num_questions = st.slider("Number of questions", 1, 5, 3)
 if st.button("Generate Quiz"):
     with st.spinner("Talking to AI..."):
         quiz = generate_quiz(topic, level, num_questions)
-        # Add this to make sure quiz is not None
         if not quiz:
             st.error("❌ Failed to generate quiz. Please check your API key or try again.")
         else:
