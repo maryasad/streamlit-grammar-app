@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.log
+
+# Env
+.env
+.venv/
+venv/
+
+# Streamlit
+.streamlit/
+
+# Pytest
+.pytest_cache/
+
+# VSCode
+.vscode/
