@@ -1,5 +1,5 @@
 import streamlit as st
-from quiz_generator import generate_quiz
+from generator import generate_quiz
 
 st.set_page_config(page_title="AI Grammar Quiz", page_icon="🧠", layout="centered")
 
