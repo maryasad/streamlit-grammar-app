@@ -1,8 +1,8 @@
 # tests/test_generator.py
 from unittest.mock import patch
-from app.generator import generate_quiz
+from generator import generate_quiz
 
-@patch("app.generator.openai.chat.completions.create")
+@patch("generator.openai.chat.completions.create")
 def test_generate_quiz(mock_create):
     mock_create.return_value = {
         "choices": [{"message": {"content": "Q1: What is correct?\nA) Foo\nB) Bar\nC) Baz\nAnswer: B"}}]

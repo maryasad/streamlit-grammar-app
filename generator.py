@@ -1,9 +1,9 @@
-# app/generator.py
+# generator.py
 import os
 import openai
 from dotenv import load_dotenv
-from app.config import OPENAI_API_KEY
-from app.prompts import build_prompt
+from config import OPENAI_API_KEY
+from prompts import build_prompt
 
 load_dotenv()  # 👈 ensures .env is loaded in dev and test too
 FAKE_MODE = os.getenv("FAKE_MODE") == "true"
