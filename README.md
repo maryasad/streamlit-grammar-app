@@ -1,103 +1,78 @@
-# 🧠 AI Grammar Quiz App
+# Quizcraft - AI-Powered English Grammar Quiz App
 
-An interactive, AI-powered English grammar quiz app built with **Streamlit**. This app generates real-time multiple-choice grammar questions using OpenAI's GPT model and provides instant feedback to help learners practice their English in a fun and intelligent way.
+An intelligent English grammar quiz application built with **Streamlit** that generates personalized quizzes using AI. The app creates engaging, adaptive quizzes based on user-selected grammar topics and difficulty levels.
 
-![app-screenshot](./screenshot.png)
+## Features
 
----
+- **AI-Powered Quiz Generation**: Creates dynamic grammar quizzes using advanced language models
+- **Topic Selection**: Choose from various grammar topics (tenses, parts of speech, punctuation, etc.)
+- **Difficulty Levels**: Adaptive difficulty settings for different skill levels
+- **Interactive Interface**: Clean, user-friendly Streamlit interface
+- **Real-time Feedback**: Immediate scoring and explanations
+- **Progress Tracking**: Monitor your grammar improvement over time
 
-## ✨ Features
+## Installation
 
-- ✅ AI-generated grammar quiz questions
-- ✅ Beginner, Intermediate, and Advanced levels
-- ✅ Topics like Tenses, Prepositions, Articles, and more
-- ✅ Interactive UI with answer validation
-- ✅ Real-time quiz generation via GPT-3.5
-- ✅ Automatic CI checks via GitHub Actions
-- ✅ Easy to extend (add explanations, scoring history, voice input, etc.)
-
----
-
-## 🛠 Tech Stack
-
-| Layer      | Technology         |
-|------------|--------------------|
-| Frontend   | Streamlit          |
-| Backend    | Python (OpenAI API)|
-| Language Model | GPT-3.5-turbo |
-| Environment | `venv`            |
-| CI/CD      | GitHub Actions     |
-| Hosting    | *Streamlit Community Cloud (optional)* |
-
----
-
-## 🚀 Getting Started
-
-### 1. Clone the repository
-
+1. Clone the repository:
 ```bash
-git clone https://github.com/maryasad/streamlit-grammar-app.git
+git clone <repository-url>
 cd streamlit-grammar-app
 ```
 
-### 2. Set up virtual environment
+2. Install dependencies:
 ```bash
-Copy
-Edit
-python -m venv venv
-venv\Scripts\activate  # On Windows
-# or
-source venv/bin/activate  # On macOS/Linux
-```
-### 3. Install dependencies
-```bash
-Copy
-Edit
 pip install -r requirements.txt
 ```
-### 4. Add your OpenAI API key
-Create a .env file in the root:
 
-env
-Copy
-Edit
-OPENAI_API_KEY=sk-xxxxxxxxxxxxxxxx
-### 5. Run the app
+3. Set up your environment variables:
 ```bash
-Copy
-Edit
+# Create a .env file and add your OpenAI API key
+OPENAI_API_KEY=your_api_key_here
+```
+
+## Usage
+
+Run the Streamlit app:
+```bash
 streamlit run app.py
 ```
-### ⚙️ Continuous Integration
-This project uses GitHub Actions to run CI checks on each push to main:
 
-✅ Python syntax checks via flake8
+The app will open in your default web browser. Select your preferred grammar topic and difficulty level to start generating personalized quizzes.
 
-✅ Dependency installation test
+## Configuration
 
-✅ Code cleanliness for Streamlit app
+The app uses the following configuration files:
+- `config.py`: Application settings and constants
+- `prompts.py`: AI prompt templates for quiz generation
+- `generator.py`: Quiz generation logic
+- `parser.py`: Response parsing utilities
 
-CI configuration is defined in .github/workflows/test.yml.
+## Contributing
 
-### 📌 Planned Features
- GPT-generated explanations for answers
+Contributions are welcome! Please feel free to submit a Pull Request.
 
- Persian (Farsi) translation toggle
+## License
 
- Text-to-speech for pronunciation
+This project is licensed under the MIT License - see the LICENSE file for details.
 
- Score tracking over time
+---
 
- Auto-deploy via Streamlit Cloud
+## Hugging Face Spaces Configuration
 
+This app is configured for deployment on Hugging Face Spaces:
 
-```
-/app
-  ├── main.py            ← Streamlit entry
-  ├── generator.py       ← AI quiz logic
-  ├── prompts.py         ← prompt templates
-  ├── parser.py          ← answer extraction/cleanup
-  └── config.py          ← API keys/env loader
+---
+title: Quizcraft
+emoji: 🚀
+colorFrom: yellow
+colorTo: gray
+sdk: gradio
+sdk_version: 5.38.0
+app_file: app.py
+pinned: false
+license: mit
+short_description: AI-powered English grammar quiz app built with **Streamlit**
+---
 
-```
+Check out the configuration reference at https://huggingface.co/docs/hub/spaces-config-reference
 
