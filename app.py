@@ -2,6 +2,16 @@
 import streamlit as st
 from generator import generate_quiz
 import time
+import os
+
+
+key = os.getenv("OPENAI_API_KEY")
+
+if key:
+    st.success("✅ OPENAI_API_KEY is set!")
+else:
+    st.error("❌ OPENAI_API_KEY is NOT set. Check Secrets in Hugging Face.")
+
 
 st.set_page_config(page_title="AI Grammar Quiz", page_icon="🧠", layout="centered")
 st.title("🧠 AI Grammar Quiz Generator")
@@ -45,8 +55,10 @@ if "quiz" in st.session_state:
             if ans["user"] == ans["correct"]:
                 score += 1
         total = len(st.session_state["answers"])
-        percent = int((score / total) * 100)
-
+        if total > 0:
+            percent = int((score / total) * 100)
+        else:
+            percent = 0
         st.success(f"✅ Final Score: {score} / {total}")
         progress_bar = st.progress(0)
         for i in range(percent + 1):
