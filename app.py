@@ -39,14 +39,23 @@ if "quiz" in st.session_state:
         if not block.strip():
             continue
         try:
-            question_part, answer_part = block.strip().split("Answer:")
+            # Safe parsing
+            if "Answer:" not in block:
+                raise ValueError("Missing 'Answer:'")            
+            question_part, answer_part = block.strip().split("Answer:",1)
+            question_text = question_part.strip()
+            correct_letter = answer_part.strip()[0].upper()
+            # Validate the correct letter
+            if correct_letter not in ["A", "B", "C"]:
+                raise ValueError("Invalid answer format")
+
             st.markdown(f"**{question_part.strip()}**")
             user_input = st.radio(f"Your answer for Q{i+1}", ["A", "B", "C"], key=f"q{i}")
             st.session_state["answers"][i] = {
                 "user": user_input,
                 "correct": answer_part.strip()[0]
             }
-        except Exception:
+        except Exception as e:
             st.warning(f"⚠️ Question {i+1} couldn't be parsed. Try generating again.")
 
     if st.button("Submit All Answers"):

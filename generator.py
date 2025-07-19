@@ -25,10 +25,13 @@ def generate_quiz(topic: str, level: str, num_questions: int) -> str:
             temperature=0.7,
         )
         content = response.choices[0].message.content
-        if content is not None:
+        print("🔍 Generated Content:\n", content)  # Add this
+        if content:
             return content.strip()
         else:
             return ""
     except Exception as e:
         print(f"❌ OpenAI error: {e}")
         return ""
+
+
