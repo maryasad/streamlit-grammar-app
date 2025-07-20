@@ -8,16 +8,17 @@ import os
 if "HF_SPACE_ID" in os.environ:
     os.environ["FAKE_MODE"] = "true"
 
-key = os.getenv("OPENAI_API_KEY")
-
-if key:
-    st.success("✅ OPENAI_API_KEY is set!")
-else:
-    st.error("❌ OPENAI_API_KEY is NOT set. Check Secrets in Hugging Face.")
-
 if os.getenv("FAKE_MODE") == "true":
     st.warning("🚧 Running in demo mode. Real API is disabled.")
-    
+
+# key = os.getenv("OPENAI_API_KEY")
+
+# if key:
+#     st.success("✅ OPENAI_API_KEY is set!")
+# else:
+#     st.error("❌ OPENAI_API_KEY is NOT set. Check Secrets in Hugging Face.")
+
+
 st.set_page_config(page_title="AI Grammar Quiz", page_icon="🧠", layout="centered")
 st.title("🧠 AI Grammar Quiz Generator")
 st.write("Test your grammar with quizzes created by AI!")
