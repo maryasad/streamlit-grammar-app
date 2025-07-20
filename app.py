@@ -50,7 +50,30 @@ if "quiz" in st.session_state:
                 raise ValueError("Invalid answer format")
 
             st.markdown(f"**{question_part.strip()}**")
-            user_input = st.radio(f"Your answer for Q{i+1}", ["A", "B", "C"], key=f"q{i}")
+            # Extract options and correct answer
+            lines = question_text.strip().split("\n")
+            question_line = lines[0]
+            options = lines[1:]  # Expects: A) Option 1, B) Option 2, ...
+
+            # Map options to labels
+            option_map = {}
+            for line in options:
+                if line.strip()[:2] in ["A)", "B)", "C)"]:
+                    letter = line.strip()[0]
+                    text = line.strip()[3:].strip()
+                    option_map[text] = letter
+
+            # Show question and clickable options
+            st.markdown(f"**{question_line}**")
+            user_input_text = st.radio("Choose your answer:", list(option_map.keys()), key=f"q{i}")
+
+            # Save both text and mapped letter
+            st.session_state["answers"][i] = {
+                "user_letter": option_map[user_input_text],
+                "correct_letter": correct_letter,
+                "user_text": user_input_text
+            }
+
             st.session_state["answers"][i] = {
                 "user": user_input,
                 "correct": answer_part.strip()[0]
@@ -61,7 +84,7 @@ if "quiz" in st.session_state:
     if st.button("Submit All Answers"):
         score = 0
         for ans in st.session_state["answers"].values():
-            if ans["user"] == ans["correct"]:
+            if ans["user_letter"] == ans["correct_letter"]:
                 score += 1
         total = len(st.session_state["answers"])
         if total > 0:
@@ -76,7 +99,9 @@ if "quiz" in st.session_state:
 
         for i, ans in st.session_state["answers"].items():
             if st.button(f"Reveal Answer Q{i+1}", key=f"reveal_{i}"):
-                st.info(f"✅ Correct answer: {ans['correct']}")
+                st.info(f"✅ Correct answer: {ans['correct_letter']} — {ans['user_text']}")
+
+
 
         # Save to history
         if "history" not in st.session_state:
