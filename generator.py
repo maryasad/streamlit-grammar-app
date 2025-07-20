@@ -4,6 +4,7 @@ import openai
 from dotenv import load_dotenv
 from config import OPENAI_API_KEY
 from prompts import build_prompt
+from db import save_quiz
 
 load_dotenv()  # Load .env file
 
@@ -32,6 +33,10 @@ def generate_quiz(topic: str, level: str, num_questions: int) -> str:
         )
         content = response.choices[0].message.content
         print("🔍 Generated Content:\n", content)
+
+        if not is_fake_mode() and content:
+            save_quiz(topic, level, content.strip())
+    
         return content.strip() if content else ""
     except Exception as e:
         print(f"❌ OpenAI error: {e}")
