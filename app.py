@@ -4,6 +4,10 @@ from generator import generate_quiz
 import time
 import os
 
+st.write("🔍 Environment keys:", list(os.environ.keys()))
+
+
+
 # Enable FAKE_MODE on Hugging Face
 if "HF_SPACE_ID" in os.environ:
     os.environ["FAKE_MODE"] = "true"
