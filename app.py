@@ -4,25 +4,25 @@ from generator import generate_quiz
 import time
 import os
 
-st.write("🔍 Environment keys:", list(os.environ.keys()))
-
+# st.write("🔍 Environment keys:", list(os.environ.keys()))
+#
 
 
 # Enable FAKE_MODE on Hugging Face
-if "HF_SPACE_ID" in os.environ:
+if "SPACE_ID" in os.environ:
     os.environ["FAKE_MODE"] = "true"
 
-st.warning(os.getenv("FAKE_MODE"))
+# st.warning(os.getenv("FAKE_MODE"))
 
 if os.getenv("FAKE_MODE") == "true":
     st.warning("🚧 Running in demo mode. Real API is disabled.")
 
-# key = os.getenv("OPENAI_API_KEY")
+key = os.getenv("OPENAI_API_KEY")
 
-# if key:
-#     st.success("✅ OPENAI_API_KEY is set!")
-# else:
-#     st.error("❌ OPENAI_API_KEY is NOT set. Check Secrets in Hugging Face.")
+if key:
+    st.success("✅ OPENAI_API_KEY is set!")
+else:
+    st.error("❌ OPENAI_API_KEY is NOT set. Check Secrets in Hugging Face.")
 
 
 st.set_page_config(page_title="AI Grammar Quiz", page_icon="🧠", layout="centered")
