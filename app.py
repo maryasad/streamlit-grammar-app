@@ -73,11 +73,6 @@ if "quiz" in st.session_state:
                 "correct_letter": correct_letter,
                 "user_text": user_input_text
             }
-
-            st.session_state["answers"][i] = {
-                "user": user_input,
-                "correct": answer_part.strip()[0]
-            }
         except Exception as e:
             st.warning(f"⚠️ Question {i+1} couldn't be parsed. Try generating again.")
 
