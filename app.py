@@ -8,6 +8,8 @@ import os
 if "HF_SPACE_ID" in os.environ:
     os.environ["FAKE_MODE"] = "true"
 
+st.warning(os.getenv)
+
 if os.getenv("FAKE_MODE") == "true":
     st.warning("🚧 Running in demo mode. Real API is disabled.")
 
