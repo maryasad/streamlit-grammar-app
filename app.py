@@ -4,6 +4,9 @@ from generator import generate_quiz
 import time
 import os
 
+# Enable FAKE_MODE on Hugging Face
+if "HF_SPACE_ID" in os.environ:
+    os.environ["FAKE_MODE"] = "true"
 
 key = os.getenv("OPENAI_API_KEY")
 
@@ -12,7 +15,9 @@ if key:
 else:
     st.error("❌ OPENAI_API_KEY is NOT set. Check Secrets in Hugging Face.")
 
-
+if os.getenv("FAKE_MODE") == "true":
+    st.warning("🚧 Running in demo mode. Real API is disabled.")
+    
 st.set_page_config(page_title="AI Grammar Quiz", page_icon="🧠", layout="centered")
 st.title("🧠 AI Grammar Quiz Generator")
 st.write("Test your grammar with quizzes created by AI!")
